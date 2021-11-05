@@ -16,6 +16,9 @@ jobs:
         run: |
           pwd
           ls -a
+          cd ../
+          pwd
+          ls -a
           python -m pip install --upgrade pip
           pwd
           pip3 install -r requirements.txt
