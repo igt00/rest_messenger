@@ -1,6 +1,5 @@
 from django.contrib.auth import login, logout
 from rest_framework import views, status
-from rest_framework.authentication import SessionAuthentication
 from rest_framework.generics import CreateAPIView
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
@@ -15,7 +14,7 @@ class LoginAPIView(views.APIView):
     permission_classes = (AllowAny,)
 
     def post(self, request):
-        serializer = self.serializer_class(data=request.data)
+        serializer = self.serializer_class(data=request.data, context={'request': request})
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data['user']
 
@@ -24,7 +23,6 @@ class LoginAPIView(views.APIView):
 
 
 class LogoutAPIView(views.APIView):
-    authentication_classes = (SessionAuthentication,)
 
     def post(self, request):
         logout(request)

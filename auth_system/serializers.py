@@ -9,7 +9,9 @@ class LoginSerializer(serializers.Serializer):
     password = serializers.CharField()
 
     def validate(self, validated_data):
-        user = authenticate(username=validated_data['email'], password=validated_data['password'])
+        user = authenticate(
+            request=self.context['request'], email=validated_data['email'], password=validated_data['password'],
+        )
 
         if not user:
             raise serializers.ValidationError('Incorrect email or password')
@@ -29,3 +31,12 @@ class RegisterSerializer(serializers.ModelSerializer):
     def validate_email(self, email):
         validate_email(email)
         return email
+
+    def create(self, validated_data):
+        user = User.objects.create(
+            username=validated_data['email'],
+            **validated_data,
+        )
+        user.set_password(validated_data['password'])
+        user.save()
+        return user
