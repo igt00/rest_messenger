@@ -10,21 +10,22 @@ on:
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v1
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v1
-        with:
-          - python-version: 3.9
-      - name: Install dependencies
-        run: |
-          pwd
-          ls -a
-          python -m pip install --upgrade pip
-          pwd
-          pip3 install -r requirements.txt
-      - name: linter
-        run: |
-          git ls-files | grep -v 'migrations' | grep -v 'settings.py' | grep -v 'manage.py' | grep -E '.py$' |
-                    xargs pylint -E --load-plugins=pylint_django
+    - uses: actions/checkout@v1
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+    - name: Install dependencies
+      run: |
+        pwd
+        ls -a
+        python -m pip install --upgrade pip
+        pip install --user -r requirements.txt
+    - name: Pylint
+      run: |
+        git ls-files | grep -v 'migrations' | grep -v 'settings.py' | grep -v 'manage.py' | grep -E '.py$' |
+          xargs pylint -E --load-plugins=pylint_django
