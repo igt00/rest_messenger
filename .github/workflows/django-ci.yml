@@ -25,5 +25,4 @@ jobs:
         pip install --user -r requirements.txt
     - name: Pylint
       run: |
-        git ls-files | grep -v 'migrations' | grep -v 'settings.py' | grep -v 'manage.py' | grep -E '.py$' |
-          xargs pylint -E --load-plugins=pylint_django
+        git ls-files | grep -v 'migrations' | grep -v 'settings.py' | grep -v 'manage.py' | grep -E '.py$'
