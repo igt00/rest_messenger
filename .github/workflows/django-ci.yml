@@ -14,7 +14,8 @@ jobs:
     steps:
       - name: Install dependencies
         run: |
-          pip3 install -r requirements.txt
+          python -m pip install --upgrade pip
+          pip3 install -r ../../requirements.txt
       - name: linter
         run: |
           git ls-files | grep -v 'migrations' | grep -v 'settings.py' | grep -v 'manage.py' | grep -E '.py$' |
