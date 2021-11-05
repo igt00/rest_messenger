@@ -4,7 +4,6 @@ from rest_framework.generics import CreateAPIView
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
-from auth_system.models import User2
 from auth_system.serializers import LoginSerializer, RegisterSerializer
 
 
@@ -36,5 +35,4 @@ class RegisterCreateAPIView(CreateAPIView):
 
     def perform_create(self, serializer):
         user = serializer.save()
-        User2.objects.create(user=user)
         login(self.request, user)
