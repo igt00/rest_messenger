@@ -1,4 +1,4 @@
-from  rest_framework import serializers
+from rest_framework import serializers
 
 from auth_system.models import User2
 
@@ -8,4 +8,4 @@ class User2Serializer(serializers.ModelSerializer):
 
     class Meta:
         model = User2
-        fields = ('id', 'first_name', 'surname', 'second_name', 'email')
+        fields = ('id', 'first_name', 'surname', 'second_name', 'email', 'gender')
