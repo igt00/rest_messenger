@@ -15,6 +15,7 @@ jobs:
       - name: Install dependencies
         run: |
           pwd
+          ls -a
           python -m pip install --upgrade pip
           pwd
           pip3 install -r requirements.txt
