@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.core.validators import validate_email
 from rest_framework import serializers
-e
+
 
 class LoginSerializer(serializers.Serializer):
     email = serializers.EmailField()
