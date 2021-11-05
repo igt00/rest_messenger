@@ -9,12 +9,14 @@ class LoginSerializer(serializers.Serializer):
     password = serializers.CharField()
 
     def validate(self, validated_data):
-        user = authenticate(
-            request=self.context['request'], email=validated_data['email'], password=validated_data['password'],
-        )
+        user = User.objects.filter(email=validated_data['email'])
 
         if not user:
-            raise serializers.ValidationError('Incorrect email or password')
+            raise serializers.ValidationError('Invalid email')
+
+        user = user.get()
+        if not user.check_password(validated_data['password']):
+            raise serializers.ValidationError('Invalid password')
 
         return {'user': user}
 
