@@ -42,5 +42,5 @@ jobs:
       - name: Run flake8
         uses: py-actions/flake8@v1
         with:
-          exclude: "migrations/*", "settings.py"
+          exclude: "settings.py"
           max-line-length: "100"
