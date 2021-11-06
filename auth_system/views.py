@@ -1,5 +1,5 @@
 from django.contrib.auth import login, logout
-from rest_framework import views, status
+from rest_framework import status, views
 from rest_framework.generics import CreateAPIView
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
