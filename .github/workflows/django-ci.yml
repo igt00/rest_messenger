@@ -44,3 +44,10 @@ jobs:
         with:
           exclude: "migrations"
           max-line-length: "100"
+  wps:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source repository
+        uses: actions/checkout@v2
+      - name: Run wemake python styleguide
+        uses: wemake-services/wemake-python-styleguide@master
