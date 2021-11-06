@@ -51,7 +51,3 @@ jobs:
         uses: actions/checkout@v2
       - name: Run wemake python styleguide
         uses: wemake-services/wemake-python-styleguide@master
-        with:
-          exclude: 'migrations'
-          max-line-length: '100'
-          ignore: D100
