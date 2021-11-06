@@ -7,3 +7,4 @@ pylint==2.11.1
 flake8==4.0.1
 pylint-django==2.4.4
 pylint-plugin-utils==0.6
+wemake-python-styleguide==0.15.3
