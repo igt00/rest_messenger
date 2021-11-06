@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+from rest_messenger.drf_yasg import schema_view
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('auth_system.urls')),
-    path('api/cabinet/', include('cabinet.urls')),
+    path('', include('auth_system.urls'), name='auth_system'),
+    path('api/cabinet/', include('cabinet.urls'), name='api_cabinet'),
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]

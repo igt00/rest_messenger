@@ -8,3 +8,4 @@ flake8==3.9.2
 pylint-django==2.4.4
 pylint-plugin-utils==0.6
 wemake-python-styleguide==0.15.3
+drf-yasg==1.20.0

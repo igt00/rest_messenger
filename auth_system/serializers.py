@@ -1,5 +1,4 @@
-from django.conf import settings
-from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
 from django.core.validators import validate_email
 from rest_framework import serializers
 
@@ -11,7 +10,7 @@ class LoginSerializer(serializers.Serializer):
     password = serializers.CharField()
 
     def validate(self, validated_data):
-        user = get_user_model().objects.filter(email=validated_data['email'])
+        user = User.objects.filter(email=validated_data['email'])
 
         if not user:
             raise serializers.ValidationError('Invalid email')
@@ -25,7 +24,7 @@ class LoginSerializer(serializers.Serializer):
 
 class RegisterSerializer(serializers.ModelSerializer):
     class Meta:
-        model = settings.AUTH_USER_MODEL
+        model = User
         fields = ('email', 'password')
         extra_kwargs = {
             'password': {'required': True, 'write_only': True},
@@ -37,7 +36,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         return email
 
     def create(self, validated_data):
-        user = get_user_model().objects.create(
+        user = User.objects.create(
             username=validated_data['email'],
             **validated_data,
         )
