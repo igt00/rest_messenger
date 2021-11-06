@@ -1,5 +1,5 @@
-from rest_framework.generics import RetrieveAPIView, RetrieveUpdateAPIView
 from rest_framework.authentication import SessionAuthentication
+from rest_framework.generics import RetrieveAPIView, RetrieveUpdateAPIView
 
 from cabinet.serializers import User2Serializer
 
