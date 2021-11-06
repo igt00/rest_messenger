@@ -5,14 +5,11 @@ on:
     branches:
       - master
   pull_request:
-    branches:
-      - master
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Setup Python 3.9
         uses: actions/setup-python@v1
         with:
@@ -24,7 +21,7 @@ jobs:
   pylint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Setup Python 3.9
         uses: actions/setup-python@v1
         with:
@@ -35,17 +32,14 @@ jobs:
   flake8_py3:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - name: Check out source repository
+        uses: actions/checkout@v2
       - name: Setup Python 3.9
         uses: actions/setup-python@v1
         with:
           python-version: 3.9
           architecture: x64
-      - name: Checkout PyTorch
-        uses: actions/checkout@master
-      - name: Install flake8
-        run: pip install flake8
       - name: Run flake8
-        uses: suo/flake8-github-action@releases/v1
+        uses: py-actions/flake8@v1
         with:
-          checkName: 'flake8_py3'
+          config: flake8.ini
