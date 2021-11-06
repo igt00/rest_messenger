@@ -4,7 +4,7 @@ django-add-default-value==0.9.1
 psycopg2-binary==2.9.1
 django-deprecate-fields==0.1.1
 pylint==2.11.1
-flake8==4.0.1
+flake8==3.9.2
 pylint-django==2.4.4
 pylint-plugin-utils==0.6
 wemake-python-styleguide==0.15.3
