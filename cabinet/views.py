@@ -15,7 +15,10 @@ class MeAPIView(RetrieveAPIView):
     def get_object(self):
         return self.request.user.user2
 
-    @swagger_auto_schema(tags=[CABINET_SWAGGER_TAG], responses={status.HTTP_200_OK: serializer_class()})
+    @swagger_auto_schema(
+        tags=[CABINET_SWAGGER_TAG],
+        responses={status.HTTP_200_OK: serializer_class()},
+    )
     def get(self, request, *args, **kwargs):
         """Get main information for user"""
         return super().get(request, *args, **kwargs)
@@ -28,7 +31,10 @@ class SetUserDataAPIView(RetrieveUpdateAPIView):
     def get_object(self):
         return self.request.user.user2
 
-    @swagger_auto_schema(tags=[CABINET_SWAGGER_TAG], responses={status.HTTP_200_OK: serializer_class()})
+    @swagger_auto_schema(
+        tags=[CABINET_SWAGGER_TAG],
+        responses={status.HTTP_200_OK: serializer_class()},
+    )
     def get(self, request, *args, **kwargs):
         """Get personal data for user"""
         return super().get(request, *args, **kwargs)
